@@ -8,20 +8,15 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-attachment: fixed; /* Fix gradienten på baggrunden */
+  background-attachment: fixed;
 }
 
 .welcome-container {
   text-align: center;
-  border: 2px solid #676767; /* Lys pink farve */
+  border: 2px solid #676767;
   border-radius: 15px;
   padding: 20px;
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.9
-  ); /* Let transparent hvid baggrund */
+  background-color: rgba(255, 255, 255, 0.9);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
   width: 90%;
   max-width: 400px;
@@ -33,19 +28,19 @@ body {
 }
 
 h1 {
-  color: #1a1a1a; /* Mørkegrå for tekst */
+  color: #1a1a1a;
   font-size: 2rem;
 }
 
 p {
   font-size: 1.2rem;
-  color: #060606; /* Lys pink farve til teksten */
+  color: #060606;
   margin-bottom: 20px;
 }
 
 .buttons button {
-  background-color: #f8c6d8; /* Lys pink farve */
-  color: #1a1a1a; /* Mørkegrå tekst på knappen */
+  background-color: #f8c6d8;
+  color: #1a1a1a;
   border: none;
   padding: 10px 20px;
   font-size: 1rem;
@@ -57,6 +52,6 @@ p {
 }
 
 .buttons button:hover {
-  background-color: #ffc0cb; /* En lidt lysere pink nuance ved hover */
-  transform: scale(1.05); /* Gør knappen lidt større ved hover */
+  background-color: #ffc0cb;
+  transform: scale(1.05);
 }

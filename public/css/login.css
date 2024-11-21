@@ -13,23 +13,23 @@ body {
 
 .form-container {
   text-align: center;
-  border: 2px solid #f8c6d8; /* Lys pink kant */
+  border: 2px solid #f8c6d8;
   border-radius: 10px;
-  padding: 15px; /* Mindre padding */
-  background-color: rgba(255, 255, 255, 0.95); /* Let transparent baggrund */
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.95);
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
-  width: 80%; /* Reducer bredden til 80% */
-  max-width: 300px; /* Mindre maks-bredde */
+  width: 80%;
+  max-width: 300px;
 }
 
 .logo img {
-  max-width: 100px; /* Mindre logo */
+  max-width: 100px;
   margin-bottom: 15px;
 }
 
 h1 {
   color: #1a1a1a;
-  font-size: 1.6rem; /* Reduceret fontstørrelse */
+  font-size: 1.6rem;
 }
 
 p {
