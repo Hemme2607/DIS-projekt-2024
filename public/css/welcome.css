@@ -2,8 +2,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #1a1a1a 80%, #ff85c0 20%);
-  color: #ffffff;
+  background: linear-gradient(to bottom, #ffffff 20%, #f8c6d8 60%);
+  color: #1a1a1a;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,7 +13,7 @@ body {
 
 .welcome-container {
   text-align: center;
-  border: 2px solid #ff85c0;
+  border: 2px solid #676767; /* Lys pink farve */
   border-radius: 15px;
   padding: 20px;
   background-color: rgba(
@@ -33,19 +33,19 @@ body {
 }
 
 h1 {
-  color: #2c2c2c; /* Mørkegrå for at matche baggrundstema */
+  color: #1a1a1a; /* Mørkegrå for tekst */
   font-size: 2rem;
 }
 
 p {
   font-size: 1.2rem;
-  color: #ff69b4; /* Pink farve til teksten */
+  color: #060606; /* Lys pink farve til teksten */
   margin-bottom: 20px;
 }
 
 .buttons button {
-  background-color: #ff85c0;
-  color: #ffffff;
+  background-color: #f8c6d8; /* Lys pink farve */
+  color: #1a1a1a; /* Mørkegrå tekst på knappen */
   border: none;
   padding: 10px 20px;
   font-size: 1rem;
@@ -57,6 +57,6 @@ p {
 }
 
 .buttons button:hover {
-  background-color: #ff69b4;
+  background-color: #ffc0cb; /* En lidt lysere pink nuance ved hover */
   transform: scale(1.05); /* Gør knappen lidt større ved hover */
 }
