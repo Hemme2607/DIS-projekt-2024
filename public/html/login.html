@@ -3,7 +3,43 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DIS 2024</title>
+    <title>Joe & The Juice - Log In</title>
+    <link rel="stylesheet" href="../css/login.css" />
   </head>
-  <body></body>
+  <body>
+    <div class="form-container">
+      <div class="logo">
+        <img
+          src="../IMG/joe-and-the-juice-logo.png"
+          alt="Joe & The Juice Logo"
+        />
+      </div>
+      <h1>Log In</h1>
+      <p>Enter your credentials to access your account:</p>
+      <form action="/submit-login" method="POST">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter your password"
+            required
+          />
+        </div>
+        <button type="submit">Log In</button>
+      </form>
+      <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+    </div>
+  </body>
 </html>
