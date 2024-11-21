@@ -1,0 +1,88 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom, #ffffff 20%, #f8c6d8 60%);
+  color: #1a1a1a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-attachment: fixed;
+}
+
+.form-container {
+  text-align: center;
+  border: 2px solid #f8c6d8; /* Lys pink kant */
+  border-radius: 10px;
+  padding: 15px; /* Mindre padding */
+  background-color: rgba(255, 255, 255, 0.95); /* Let transparent baggrund */
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+  width: 80%; /* Reducer bredden til 80% */
+  max-width: 300px; /* Mindre maks-bredde */
+}
+
+.logo img {
+  max-width: 100px; /* Mindre logo */
+  margin-bottom: 15px;
+}
+
+h1 {
+  color: #1a1a1a;
+  font-size: 1.6rem; /* Reduceret fontstørrelse */
+}
+
+p {
+  font-size: 0.9rem;
+  color: #060606;
+  margin-bottom: 15px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.8rem;
+  margin-bottom: 5px;
+  color: #1a1a1a;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  font-size: 0.8rem;
+  border: 1px solid #dcdcdc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #f8c6d8;
+  color: #1a1a1a;
+  border: none;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  margin: 10px 0;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #ffc0cb;
+  transform: scale(1.05);
+}
+
+a {
+  color: #f8c6d8;
+  text-decoration: none;
+  font-size: 0.8rem;
+}
+
+a:hover {
+  text-decoration: underline;
+}
