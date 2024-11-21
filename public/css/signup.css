@@ -13,23 +13,23 @@ body {
 
 .form-container {
   text-align: center;
-  border: 2px solid #f8c6d8; /* Lys pink kant */
+  border: 2px solid #f8c6d8;
   border-radius: 10px;
-  padding: 10px; /* Mindre padding */
-  background-color: rgba(255, 255, 255, 0.95); /* Let transparent baggrund */
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.95);
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
-  width: 80%; /* Reducer bredden til 80% */
-  max-width: 300px; /* Mindre maks-bredde for en kompakt visning */
+  width: 80%;
+  max-width: 300px;
 }
 
 .logo img {
-  max-width: 100px; /* Mindre logo */
+  max-width: 100px;
   margin-bottom: 10px;
 }
 
 h1 {
   color: #1a1a1a;
-  font-size: 1.6rem; /* Reduceret fontstørrelse */
+  font-size: 1.6rem;
 }
 
 p {
@@ -39,20 +39,20 @@ p {
 }
 
 .form-group {
-  margin-bottom: 10px; /* Mindre afstand mellem felterne */
+  margin-bottom: 10px;
   text-align: left;
 }
 
 .form-group label {
   display: block;
-  font-size: 0.8rem; /* Mindre font for labels */
+  font-size: 0.8rem;
   margin-bottom: 5px;
   color: #1a1a1a;
 }
 
 .form-group input {
   width: 100%;
-  padding: 6px; /* Mindre padding for inputfelter */
+  padding: 6px;
   font-size: 0.8rem;
   border: 1px solid #dcdcdc;
   border-radius: 4px;
@@ -63,7 +63,7 @@ button {
   background-color: #f8c6d8;
   color: #1a1a1a;
   border: none;
-  padding: 8px 12px; /* Mindre knapstørrelse */
+  padding: 8px 12px;
   font-size: 0.9rem;
   margin: 8px 0;
   border-radius: 5px;
@@ -80,7 +80,7 @@ button:hover {
 a {
   color: #f8c6d8;
   text-decoration: none;
-  font-size: 0.8rem; /* Mindre fontstørrelse for link */
+  font-size: 0.8rem;
 }
 
 a:hover {
