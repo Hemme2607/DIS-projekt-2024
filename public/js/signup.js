@@ -1,3 +1,4 @@
+//Henter alle elementer fra HTML
 const opretProfil = document.getElementById("makeProfile");
 const navn = document.getElementById("name");
 const email = document.getElementById("email");
