@@ -6,7 +6,7 @@ const telefon = document.getElementById("phone");
 const fDato = document.getElementById("dob");
 
 // Opretter en ny bruger ud fra de indtastede oplysninger
-opretProfil.addEventListener("click", (async) => {
+opretProfil.addEventListener("click", async () => {
   const nyoprettetBruger = {
     navn: navn.value,
     email: email.value,
