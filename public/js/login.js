@@ -10,7 +10,7 @@ loginKnap.addEventListener("click", async () => {
 
   //Sikrer at email og password er udfyldt
   if (!email || !password) {
-    alert("Fyld alle felter ud");
+    alert("Fyld email og password feltererne ud");
     return;
   }
 
@@ -29,13 +29,21 @@ loginKnap.addEventListener("click", async () => {
   })
     //Hvis responsen ikke er ok, vises der en fejl.
     .then((response) => {
-      if (!response.ok) throw new Error("Fejl ved login");
+      if (!response.ok) {
+        return response.json().then((data) => {
+          throw new Error(data.error || "Fejl ved login");
+        });
+      }
       return response.json();
     })
-    .then((loginData) => {
-      console.log(loginData);
+    .then((userData) => {
+      //Gemmer brugerens data i session storage
+      sessionStorage.setItem("user", JSON.stringify(userData));
+      alert("Du er nu logget ind");
+      window.location.href = "/stempel.html";
     })
     .catch((error) => {
       console.error("Error:", error);
+      alert(error.message);
     });
 });

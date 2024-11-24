@@ -44,10 +44,23 @@ app.post("/users", async (req, res) => {
     const { navn, email, password, telefon, fDato } = req.body;
 
     //Valider at email skal indeholde et "@" "."
-    if (!email.value.includes("@") || !email.value.includes(".")) {
-      alert("Email skal indeholde '@' og '.'");
-      return;
+    if (!email.includes("@") || !email.includes(".")) {
+      return res.status(400).send({ error: "Email must contain '@' and '.'" });
     }
+
+    //Valider at telefonnummeret skal være 8 cifre
+    if (telefon.length !== 8) {
+      return res.status(400).send({ error: "Phone number must be 8 digits" });
+    }
+
+    //Valider at email ikke allerede er i brug
+    const emailCheck = db
+      .prepare("SELECT * FROM users WHERE email = ?")
+      .get(email);
+    if (emailCheck) {
+      return res.status(400).send("Email already in use");
+    }
+
     //Hasher passwordet
     const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -79,18 +92,18 @@ app.post("/login", async (req, res) => {
     const user = stmt.get(email);
 
     if (!user) {
-      return res.status(401).send("Invalid email or password");
+      return res.status(401).json({ error: "Invalid email or password" });
     }
     //Sammenligner det indtastede password med det hashede password i databasen
     const passwordMatch = await bcrypt.compare(password, user.password);
     //Hvis passwordet ikke matcher, fremkommer der en fejlbesked.
     if (!passwordMatch) {
-      return res.status(401).send("Invalid email or password");
+      return res.status(401).json({ error: "Invalid email or password" });
     }
 
     res.status(200).json({ id: user.id, navn: user.navn, email: user.email });
   } catch (error) {
     console.error("Error:", error);
-    res.status(500).send("Internal server error");
+    res.status(500).send({ error: "Internal server error" });
   }
 });
