@@ -42,6 +42,13 @@ app.listen(PORT, () => {
 app.post("/users", async (req, res) => {
   try {
     const { navn, email, password, telefon, fDato } = req.body;
+
+    //Valider at email skal indeholde et "@" "."
+    if (!email.value.includes("@") || !email.value.includes(".")) {
+      alert("Email skal indeholde '@' og '.'");
+      return;
+    }
+    //Hasher passwordet
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const stmt = db.prepare(
@@ -52,6 +59,36 @@ app.post("/users", async (req, res) => {
     res
       .status(201)
       .json({ id: result.lastInsertRowid, navn, email, telefon, fDato });
+  } catch (error) {
+    if (error.code === "SQLITE_CONSTRAINT") {
+      //Sikrer at hvis email eller telefonnummeret allerede er i brug, så får brugeren en fejlbesked
+      return res.status(400).send("Email or phone number already in use");
+    } else {
+      console.error("Error:", error);
+      res.status(500).send("Internal server error");
+    }
+  }
+});
+
+//Laver et endpoint der gør det muligt for brugeren at logge ind
+app.post("/login", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    const stmt = db.prepare("SELECT * FROM users WHERE email = ?");
+    const user = stmt.get(email);
+
+    if (!user) {
+      return res.status(401).send("Invalid email or password");
+    }
+    //Sammenligner det indtastede password med det hashede password i databasen
+    const passwordMatch = await bcrypt.compare(password, user.password);
+    //Hvis passwordet ikke matcher, fremkommer der en fejlbesked.
+    if (!passwordMatch) {
+      return res.status(401).send("Invalid email or password");
+    }
+
+    res.status(200).json({ id: user.id, navn: user.navn, email: user.email });
   } catch (error) {
     console.error("Error:", error);
     res.status(500).send("Internal server error");

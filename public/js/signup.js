@@ -15,6 +15,13 @@ opretProfil.addEventListener("click", async () => {
     telefon: telefon.value,
     fDato: fDato.value,
   };
+
+  //Valider at email skal indeholde et "@" "."
+  if (!email.value.includes("@") || !email.value.includes(".")) {
+    alert("Email skal indeholde '@' og '.'");
+    return;
+  }
+
   console.log(nyoprettetBruger);
   fetch("/users", {
     method: "POST",

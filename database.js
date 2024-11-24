@@ -10,9 +10,9 @@ function createDatabase() {
     db.exec(`CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     navn TEXT NOT NULL,
-    email TEXT NOT NULL,
+    email TEXT NOT NULL UNIQUE,
     password TEXT NOT NULL,
-    telefon TEXT NOT NULL,
+    telefon TEXT NOT NULL UNIQUE,
     fDato TEXT NOT NULL
   )`);
     console.log("Database created");
