@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", async () => {
+  //Henter brugerens data fra session storage
   const user = JSON.parse(sessionStorage.getItem("user"));
 
   if (!user) {
