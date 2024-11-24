@@ -1,5 +1,3 @@
-const db = require("../../database");
-
 //Henter alle elementer fra HTML
 const opretProfil = document.getElementById("makeProfile");
 const navn = document.getElementById("name");
