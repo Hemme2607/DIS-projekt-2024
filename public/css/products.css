@@ -1,4 +1,4 @@
-/* Navigation styling */
+
 nav {
     background-color: #f8c6d8;
     padding: 10px 20px;
@@ -30,7 +30,7 @@ nav {
     color: #ff0055;
   }
   
-  /* Baggrund styling */
+  
   body {
     margin: 0;
     padding: 0;
@@ -42,13 +42,13 @@ nav {
     background-attachment: fixed;
   }
   
-  /* Produkter container */
+  
   .products-container {
     text-align: center;
     padding: 20px;
   }
   
-  /* Grid layout for produkter */
+  
   .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -56,19 +56,19 @@ nav {
     margin-top: 20px;
   }
   
-  /* Styling for produktkort */
+  
   .product-item {
     background: rgba(255, 255, 255, 0.95);
     border: 2px solid #f8c6d8;
-    border-radius: 15px; /* Større afrundede hjørner */
+    border-radius: 15px; 
     padding: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Blød skygge */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); 
     text-align: center;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
   .product-item:hover {
-    transform: scale(1.05); /* Løfter kortet ved hover */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Kraftigere skygge ved hover */
+    transform: scale(1.05); 
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); 
   }
   .product-item img {
     max-width: 100%;
