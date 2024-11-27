@@ -1,41 +1,42 @@
-/* Generelt layout */
-body {
+body { /*den samme som de andre css'er*/
     margin: 0;
     padding: 0;
-    font-family: 'Montserrat', sans-serif;
-    background: #ffffff; /* Mørk baggrund */
-    color: #ffffff; /* Hvid tekst */
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #ffffff 20%, #f8c6d8 60%);
+    color: #1a1a1a;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-}
+    height: 100vh;
+    background-attachment: fixed;
+  }
 
 /* Betalingsboks */
 .payment-box {
-    background: #ffffff; /* Hvid baggrund */
+    background: #ffffff; 
+    border: 2px solid #676767;
     border-radius: 15px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     padding: 30px;
     max-width: 450px;
     width: 100%;
-    box-sizing: border-box; /* Sørger for ens margin/padding */
+    box-sizing: border-box; 
 }
 
 /* Logo */
 .logo {
     max-width: 150px;
     margin: 0 auto 20px auto;
-    display: block; /* Centrerer logoet */
+    display: block; 
 }
 
 /* Overskrift */
 .payment-box h1 {
     font-size: 2rem;
     margin-bottom: 15px;
-    color: #000000; /* Joe & The Juice lyserød */
+    color: #000000; 
     text-transform: uppercase;
-    text-align: center; /* Centrerer overskriften */
+    text-align: center; 
 }
 
 /* Tekst */
@@ -48,23 +49,23 @@ body {
 
 /* Produktsektion */
 .product-placeholder {
-    background: #E6B9D2; /* Pastelrosa */
+    background: #f8c6d8; 
     padding: 15px;
     margin-bottom: 20px;
     border-radius: 10px;
-    color: #1a1a1a; /* Sort tekst */
-    border: 1px solid #E6B9D2;
+    color: #1a1a1a; 
+    border: 1px solid #f8c6d8;
     font-weight: bold;
     text-align: center;
 }
 
-/* Labels */
+/* tekst over input felterne */
 label {
     font-size: 0.9rem;
     color: #666666;
     display: block;
     margin-bottom: 5px;
-    text-align: left; /* Justerer labels til venstre */
+    text-align: left; 
 }
 
 /* Input felter */
@@ -84,7 +85,7 @@ input {
     padding: 15px;
     font-size: 1.2rem;
     color: #000000;
-    background: #E6B9D2; /* Samme som overskriften */
+    background: #f8c6d8; /* Samme som overskriften */
     border: none;
     border-radius: 50px;
     width: 100%;
@@ -93,13 +94,3 @@ input {
     transition: background 0.3s ease;
 }
 
-/* Responsivt design */
-@media (max-width: 768px) {
-    .payment-box {
-        padding: 20px;
-    }
-
-    .payment-box h1 {
-        font-size: 1.8rem;
-    }
-}
