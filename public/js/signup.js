@@ -15,6 +15,13 @@ opretProfil.addEventListener("click", async () => {
     telefon: telefon.value,
     fDato: fDato.value,
   };
+
+  //Valider at email skal indeholde et "@" "."
+  if (!email.value.includes("@") || !email.value.includes(".")) {
+    alert("Email skal indeholde '@' og '.'");
+    return;
+  }
+
   console.log(nyoprettetBruger);
   fetch("/users", {
     method: "POST",
@@ -23,11 +30,20 @@ opretProfil.addEventListener("click", async () => {
     },
     body: JSON.stringify(nyoprettetBruger),
   })
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) throw new Error("Fejl ved oprettelse af bruger");
+      return response.json();
+    })
     .then((nyoprettetBruger) => {
       console.log(nyoprettetBruger);
+      //Viser en alert, når brugeren succesfuldt oprettes
+      alert("Du er nu oprettet som bruger, og vil blive sendt til login siden");
+      setTimeout(() => {
+        window.location.href = "/login.html";
+      }, 3000);
     })
     .catch((error) => {
       console.error("Error:", error);
+      alert(error.message);
     });
 });
