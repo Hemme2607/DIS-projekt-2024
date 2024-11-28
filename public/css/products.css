@@ -121,3 +121,77 @@ body {
   font-size: 1rem;
   color: #1a1a1a;
 }
+
+.add-to-order {
+  background-color: #ff88aa;
+  color: white; 
+  border: none; 
+  border-radius: 20px; 
+  padding: 10px 20px;
+  font-size: 20px; 
+  font-weight: bold;
+  cursor: pointer; 
+  width: 90%; 
+  text-align: center; 
+  margin-top: 10px; 
+  transition: background-color 0.3s, transform 0.2s; 
+}
+
+.add-to-order:hover {
+  background-color: #ff6699; 
+  transform: scale(1.05); 
+}
+
+.add-to-order:active {
+  background-color: #ff5077; 
+  transform: scale(0.95); 
+}
+
+/* Kurven oppe i højre hjørne */
+/* Style for kurven */
+.cart-container {
+  position: fixed;
+  top: 20%;
+  right: 20px;
+  width: 200px;
+  z-index: 10; /* Sørg for, at den vises foran andre elementer */
+}
+
+.cart {
+  background-color: #ff88aa;
+  color: white;
+  font-weight: bold;
+  padding: 10px 15px;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.cart:hover {
+  background-color: #ff6699;
+  transform: scale(1.05);
+}
+
+/* Dropdown-boksen til kurven */
+.cart-dropdown {
+  display: none; /* Start som skjult */
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  width: 250px;
+  z-index: 10;
+}
+.cart-dropdown p {
+  margin: 0;
+  padding: 5px 0;
+  color: #333;
+  font-size: 14px;
+}
+
