@@ -1,4 +1,4 @@
-body { /*den samme som de andre css'er*/
+body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
@@ -77,7 +77,7 @@ input {
     color: #333333;
     border: 1px solid #cccccc;
     border-radius: 5px;
-    box-sizing: border-box; /* Ens padding */
+    box-sizing: border-box; 
 }
 
 /* Betalingsknap */
@@ -85,12 +85,10 @@ input {
     padding: 15px;
     font-size: 1.2rem;
     color: #000000;
-    background: #f8c6d8; /* Samme som overskriften */
+    background: #f8c6d8; 
     border: none;
     border-radius: 50px;
     width: 100%;
     cursor: pointer;
     text-transform: uppercase;
-    transition: background 0.3s ease;
 }
-

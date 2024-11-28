@@ -40,7 +40,7 @@ opretProfil.addEventListener("click", async () => {
       alert("Du er nu oprettet som bruger, og vil blive sendt til login siden");
       setTimeout(() => {
         window.location.href = "/login.html";
-      }, 3000);
+      }, 1000);
     })
     .catch((error) => {
       console.error("Error:", error);
