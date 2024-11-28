@@ -150,6 +150,7 @@ app.post("/checkAuthCode", async (req, res) => {
     const authenticateCode = authenticateMessage[email];
     //Bruger parseInt for at sikre at koden er et tal
     if (parseInt(code) === authenticateCode) {
+      //Sletter koden fra objektet, så den ikke kan bruges igen.
       delete authenticateMessage[email];
       res.status(200).json({ message: "Koden matcher" });
     } else {
