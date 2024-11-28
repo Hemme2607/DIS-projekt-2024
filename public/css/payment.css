@@ -1,0 +1,96 @@
+body { /*den samme som de andre css'er*/
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #ffffff 20%, #f8c6d8 60%);
+    color: #1a1a1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-attachment: fixed;
+  }
+
+/* Betalingsboks */
+.payment-box {
+    background: #ffffff; 
+    border: 2px solid #676767;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    max-width: 450px;
+    width: 100%;
+    box-sizing: border-box; 
+}
+
+/* Logo */
+.logo {
+    max-width: 150px;
+    margin: 0 auto 20px auto;
+    display: block; 
+}
+
+/* Overskrift */
+.payment-box h1 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #000000; 
+    text-transform: uppercase;
+    text-align: center; 
+}
+
+/* Tekst */
+.payment-box p {
+    margin-bottom: 20px;
+    font-size: 1rem;
+    color: #333333;
+    text-align: center;
+}
+
+/* Produktsektion */
+.product-placeholder {
+    background: #f8c6d8; 
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    color: #1a1a1a; 
+    border: 1px solid #f8c6d8;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* tekst over input felterne */
+label {
+    font-size: 0.9rem;
+    color: #666666;
+    display: block;
+    margin-bottom: 5px;
+    text-align: left; 
+}
+
+/* Input felter */
+input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    color: #333333;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Ens padding */
+}
+
+/* Betalingsknap */
+.pay-btn {
+    padding: 15px;
+    font-size: 1.2rem;
+    color: #000000;
+    background: #f8c6d8; /* Samme som overskriften */
+    border: none;
+    border-radius: 50px;
+    width: 100%;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background 0.3s ease;
+}
+

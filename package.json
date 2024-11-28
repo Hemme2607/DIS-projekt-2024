@@ -4,6 +4,7 @@
     "better-sqlite3": "^11.5.0",
     "cloudinary": "^2.5.1",
     "cors": "^2.8.5",
-    "express": "^4.21.1"
+    "express": "^4.21.1",
+    "twilio": "^5.3.6"
   }
 }
