@@ -69,7 +69,7 @@ loginKnap.addEventListener("click", async () => {
     sessionStorage.setItem("user", JSON.stringify(userData));
 
     alert("Login succesfuld");
-    window.location.href = "/stempel.html";
+    window.location.href = "/forside.html";
   } catch (error) {
     console.error("Error:", error);
     alert(error.message);
