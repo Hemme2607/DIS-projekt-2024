@@ -113,6 +113,9 @@ app.post("/login", async (req, res) => {
   }
 });
 
+<<<<<<< HEAD
+
+=======
 //Opretter et tomt objekt til at gemme den genererede kode, som senerer skal sammenlignes med den indtastede kode
 let authenticateMessage = {};
 
@@ -161,3 +164,4 @@ app.post("/checkAuthCode", async (req, res) => {
     res.status(500).send({ error: "Kunne ikke tjekke koden" });
   }
 });
+>>>>>>> 25323b9190067a7dc8cea9f675361405a23ee8d1
