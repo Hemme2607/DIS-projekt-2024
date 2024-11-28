@@ -161,3 +161,15 @@ app.post("/checkAuthCode", async (req, res) => {
     res.status(500).send({ error: "Kunne ikke tjekke koden" });
   }
 });
+
+// Laver endpoint for at hente oplysninger fra databasen omkring "Products"
+app.get("/api/products", (req, res) => {
+  try {
+    const stmt = db.prepare("SELECT * FROM Products"); // Forbereder forespørgslen
+    const products = stmt.all(); // Henter alle rækker fra Products-tabellen
+    res.json(products); // Returnerer resultaterne som JSON
+  } catch (error) {
+    console.error("Database error:", error);
+    res.status(500).json({ error: "Fejl ved hentning af produkter" });
+  }
+});
