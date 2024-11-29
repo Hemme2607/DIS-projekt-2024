@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
     const cartProducts = document.getElementById("cartProducts"); // Refererer til elementet med id'et cartProducts
 
-    // 1. Hent produkter fra localStorage
-    const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+    // 1. Hent produkter fra sessionStorage
+    const cartItems = JSON.parse(sessionStorage.getItem("cartItems")) || [];
 
     // 2. Hvis kurven er tom, vis en besked
     if (cartItems.length === 0) {
@@ -53,9 +53,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Event listener til at slette produktet
         deleteButton.addEventListener("click", () => {
-            // Opdater localStorage ved at fjerne alle forekomster af dette produkt
+            // Opdater sessionStorage ved at fjerne alle forekomster af dette produkt
             const updatedCartItems = cartItems.filter((item) => item.name !== productName);
-            localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+            sessionStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
 
             // Opdater siden
             location.reload(); // Genindlæs siden for at vise de opdaterede produkter

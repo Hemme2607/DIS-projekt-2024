@@ -1,12 +1,18 @@
+// Globale arrays til produktkategorier
+let juices = [];
+let sandwiches = [];
+let coffee = [];
+
 document.addEventListener("DOMContentLoaded", async () => {
     try {
         // **1. Hent produktdata og opdater sektionerne**
         const response = await fetch("/api/products");
         const products = await response.json();
 
-        const juices = products.filter((product) => product.Category === "Juice");
-        const sandwiches = products.filter((product) => product.Category === "Sandwich");
-        const coffee = products.filter((product) => product.Category === "Coffee");
+        // Filtrer produkter baseret på kategori
+        juices = products.filter((product) => product.Category === "Juice");
+        sandwiches = products.filter((product) => product.Category === "Sandwich");
+        coffee = products.filter((product) => product.Category === "Coffee");
 
         // Opdater Juice-sektionen
         juices.forEach((juice, index) => {
@@ -40,10 +46,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         console.error("Kunne ikke hente produkter:", error);
     }
 
-    // **2. Håndtering af kurven og localStorage**
+    // **2. Håndtering af kurven og sessionStorage**
     const cartDropdown = document.getElementById("cartDropdown");
     const cartButton = document.querySelector(".cart");
-    let cartItems = JSON.parse(localStorage.getItem("cartItems")) || []; // Hent fra localStorage
+    let cartItems = JSON.parse(sessionStorage.getItem("cartItems")) || []; // Hent fra sessionStorage
 
     // Funktion: Opdater dropdown-menuen
     function updateCart() {
@@ -73,7 +79,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             // Fjern produkt fra kurven
             removeButton.addEventListener("click", () => {
                 cartItems.splice(index, 1); // Fjern produkt
-                localStorage.setItem("cartItems", JSON.stringify(cartItems)); // Opdater localStorage
+                sessionStorage.setItem("cartItems", JSON.stringify(cartItems)); // Opdater sessionStorage
                 updateCart(); // Opdater visningen
             });
 
@@ -137,48 +143,45 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Opdater dropdown ved indlæsning
     updateCart();
 
-    // **3. Lyt efter ændringer i localStorage**
+    // **3. Lyt efter ændringer i sessionStorage**
     window.addEventListener("storage", () => {
-        cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-        updateCart(); // Opdater dropdown, når localStorage ændres
+        cartItems = JSON.parse(sessionStorage.getItem("cartItems")) || [];
+        updateCart(); // Opdater dropdown, når sessionStorage ændres
     });
 
     // **4. Funktion: Tilføj produkter til kurven**
-    function addToCart(productName, productPrice) {
-        cartItems.push({ name: productName, price: productPrice }); // Tilføj til array
-        localStorage.setItem("cartItems", JSON.stringify(cartItems)); // Gem i localStorage
+    function addToCart(productId, productName, productPrice) {
+        // Inkluder Product_Id i objektet
+        cartItems.push({ id: productId, name: productName, price: productPrice });
+        sessionStorage.setItem("cartItems", JSON.stringify(cartItems)); // Gem i sessionStorage
+        console.log("Opdateret cartItems:", cartItems); // Debugging
         updateCart();
     }
 
     // Event: Tilføj produkter til kurven ved klik
     document.querySelectorAll(".add-to-order").forEach((button, index) => {
         button.addEventListener("click", () => {
-            let productName, productPrice;
+            let productId, productName, productPrice;
 
-            if (index < 3) {
-                // Juices
-                productName = document.getElementById(`juiceName${index + 1}`).textContent;
-                productPrice = document
-                    .getElementById(`juicePrice${index + 1}`)
-                    .textContent.replace("Price: ", "")
-                    .replace(" kr.", "");
-            } else if (index < 6) {
-                // Sandwiches
-                productName = document.getElementById(`sandwichName${index - 2}`).textContent;
-                productPrice = document
-                    .getElementById(`sandwichPrice${index - 2}`)
-                    .textContent.replace("Price: ", "")
-                    .replace(" kr.", "");
+            if (index < juices.length) {
+                const juice = juices[index];
+                productId = juice.Product_Id; // Brug korrekt nøgle
+                productName = juice.Name;
+                productPrice = juice.Price;
+            } else if (index < juices.length + sandwiches.length) {
+                const sandwich = sandwiches[index - juices.length];
+                productId = sandwich.Product_Id; // Brug korrekt nøgle
+                productName = sandwich.Name;
+                productPrice = sandwich.Price;
             } else {
-                // Coffee
-                productName = document.getElementById(`coffeeName${index - 5}`).textContent;
-                productPrice = document
-                    .getElementById(`coffeePrice${index - 5}`)
-                    .textContent.replace("Price: ", "")
-                    .replace(" kr.", "");
+                const coffeeItem = coffee[index - juices.length - sandwiches.length];
+                productId = coffeeItem.Product_Id; // Brug korrekt nøgle
+                productName = coffeeItem.Name;
+                productPrice = coffeeItem.Price;
             }
 
-            addToCart(productName, productPrice);
+            // Tilføj produkt til kurven med ID
+            addToCart(productId, productName, productPrice);
         });
     });
 });
