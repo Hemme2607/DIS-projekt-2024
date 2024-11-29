@@ -150,9 +150,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     // **4. Funktion: Tilføj produkter til kurven**
-    function addToCart(productId, productName, productPrice) {
-        // Inkluder Product_Id i objektet
-        cartItems.push({ id: productId, name: productName, price: productPrice });
+    function addToCart(productId, productName, productPrice, Category) {
+        cartItems.push({ productId: productId, name: productName, price: productPrice, Category: Category });
         sessionStorage.setItem("cartItems", JSON.stringify(cartItems)); // Gem i sessionStorage
         console.log("Opdateret cartItems:", cartItems); // Debugging
         updateCart();
@@ -168,20 +167,23 @@ document.addEventListener("DOMContentLoaded", async () => {
                 productId = juice.Product_Id; // Brug korrekt nøgle
                 productName = juice.Name;
                 productPrice = juice.Price;
+                productCategory = juice.Category;
             } else if (index < juices.length + sandwiches.length) {
                 const sandwich = sandwiches[index - juices.length];
                 productId = sandwich.Product_Id; // Brug korrekt nøgle
                 productName = sandwich.Name;
                 productPrice = sandwich.Price;
+                productCategory = sandwich.Category;
             } else {
                 const coffeeItem = coffee[index - juices.length - sandwiches.length];
                 productId = coffeeItem.Product_Id; // Brug korrekt nøgle
                 productName = coffeeItem.Name;
                 productPrice = coffeeItem.Price;
+                productCategory = coffeeItem.Category;
             }
 
             // Tilføj produkt til kurven med ID
-            addToCart(productId, productName, productPrice);
+            addToCart(productId, productName, productPrice, productCategory);
         });
     });
 });

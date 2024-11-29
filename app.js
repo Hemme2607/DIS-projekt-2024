@@ -173,3 +173,34 @@ app.get("/api/products", (req, res) => {
     res.status(500).json({ error: "Fejl ved hentning af produkter" });
   }
 });
+
+
+
+// Endpoint: Håndter POST-anmodning til "/api/orders"
+app.post("/api/orders", (req, res) => {
+  try {
+    const { userID, products } = req.body;
+
+    // Valider, at nødvendige data er til stede
+    if (!userID || !products || !products.length) {
+      return res.status(400).json({ error: "Manglende data i ordren." });
+    }
+
+    // Konverter products til JSON-struktur
+    const productsJSON = JSON.stringify(products);
+
+    // Indsæt data i Orders-tabellen
+    const query = `
+      INSERT INTO Orders (userID, products) 
+      VALUES (?, ?)
+    `;
+    const stmt = db.prepare(query);
+    const result = stmt.run(userID, productsJSON);
+
+    // Send succes-svar med det nye orderID
+    res.status(201).json({ orderID: result.lastInsertRowid, message: "Ordren er blevet gemt!" });
+  } catch (error) {
+    console.error("Fejl ved indsættelse i databasen:", error);
+    res.status(500).json({ error: "Kunne ikke gemme ordren." });
+  }
+});
