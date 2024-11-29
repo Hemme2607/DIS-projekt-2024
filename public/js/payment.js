@@ -44,36 +44,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 5. Håndter klik på "Betal nu"-knappen
     payButton.addEventListener("click", async () => {
-        // Tjek om brugerdata og produkter findes
         if (!user || cartItems.length === 0) {
             alert("Ingen brugerdata eller produkter fundet!");
             return;
         }
-
-        // Forbered data til at sende til backend
+    
         const orderData = {
             userID: user.id,
             products: cartItems // Send hele kurven inkl. category
         };
-
+    
         try {
-            // Send data til backend med en POST-anmodning
             const response = await fetch("/api/orders", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(orderData)
             });
-
+    
             if (response.ok) {
-                alert("Ordren er blevet gemt!");
+                alert("Ordren er gennemført!");
                 sessionStorage.removeItem("cartItems"); // Tøm kurven
-                location.reload(); // Genindlæs siden for at vise en opdateret kurv
+                window.location.href = "products.html"; // Naviger tilbage til forsiden
             } else {
-                alert("Der opstod en fejl ved gemning af ordren.");
+                alert("Der opstod en fejl ved gennemførelse af ordren.");
             }
         } catch (error) {
             console.error("Fejl ved kommunikation med serveren:", error);
             alert("Kunne ikke gemme ordren.");
         }
     });
+    
 });
