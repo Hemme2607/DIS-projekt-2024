@@ -6,9 +6,9 @@ if (!user) {
   alert("Du er ikke logget ind");
   window.location.href = "/login.html";
 } else {
-  document.getElementById("profileName").innerHTML = user.navn;
-  document.getElementById("profileEmail").innerHTML = user.email;
-  document.getElementById("profilePhone").innerHTML = user.telefon;
+  document.getElementById("profilNavn").innerHTML = user.navn;
+  document.getElementById("profilEmail").innerHTML = user.email;
+  document.getElementById("profilTelefon").innerHTML = user.telefon;
   document.getElementById("profileDob").innerHTML = user.fDato;
   document.getElementById("navn").textContent = user.navn;
 }
