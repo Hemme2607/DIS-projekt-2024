@@ -106,7 +106,13 @@ app.post("/login", async (req, res) => {
       return res.status(401).json({ error: "Invalid email or password" });
     }
     //Returnerer brugerens id, navn og email
-    res.status(200).json({ id: user.id, navn: user.navn, email: user.email });
+    res.status(200).json({
+      id: user.id,
+      navn: user.navn,
+      email: user.email,
+      telefon: user.telefon,
+      fDato: user.fDato,
+    });
   } catch (error) {
     console.error("Error:", error);
     res.status(500).send({ error: "Internal server error" });
@@ -174,8 +180,6 @@ app.get("/api/products", (req, res) => {
   }
 });
 
-
-
 // Endpoint: Håndter POST-anmodning til "/api/orders"
 app.post("/api/orders", (req, res) => {
   try {
@@ -198,7 +202,10 @@ app.post("/api/orders", (req, res) => {
     const result = stmt.run(userID, productsJSON);
 
     // Send succes-svar med det nye orderID
-    res.status(201).json({ orderID: result.lastInsertRowid, message: "Ordren er blevet gemt!" });
+    res.status(201).json({
+      orderID: result.lastInsertRowid,
+      message: "Ordren er blevet gemt!",
+    });
   } catch (error) {
     console.error("Fejl ved indsættelse i databasen:", error);
     res.status(500).json({ error: "Kunne ikke gemme ordren." });

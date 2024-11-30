@@ -7,101 +7,136 @@
     <link rel="stylesheet" href="../css/products.css" />
   </head>
   <body>
-    
     <div class="oversigt">
-      <img 
-      src="https://res.cloudinary.com/dyvw6n7oj/image/upload/v1732796929/joe-and-the-juice-logo-8D32BBD87A-seeklogo.com_iiqqf9.png" alt="Joe & The Juice logo" class="logo">
+      <img
+        src="https://res.cloudinary.com/dyvw6n7oj/image/upload/v1732796929/joe-and-the-juice-logo-8D32BBD87A-seeklogo.com_iiqqf9.png"
+        alt="Joe & The Juice logo"
+        class="logo"
+      />
       <nav>
-          <a href="welcome.html">WELCOME</a>
-          <a href="products.html" class="active">MENU</a>
+        <a href="welcome.html">WELCOME</a>
+        <a href="products.html" class="active">MENU</a>
+        <a href="stempel.html">STAMPS</a>
+        <a href="myprofile.html">MY PROFILE</a>
       </nav>
       <div class="user-info">
-          <h1 id="navn">Brugernavnet</h1>
-          <button id="logout">Log ud</button>
+        <h1 id="navn">Brugernavnet</h1>
+        <button id="logout">Log ud</button>
       </div>
-  </div>
-  
+    </div>
 
-   
-  <div class="products-container">
-    <h1>Our Products</h1>
-    <p>Discover our range of fresh juices, sandwiches, and coffee!</p>
+    <div class="products-container">
+      <h1>Our Products</h1>
+      <p>Discover our range of fresh juices, sandwiches, and coffee!</p>
 
-    <div class="cart-container">
-      <div class="cart">
-        <p>🛒 Se din ordre</p>
+      <div class="cart-container">
+        <div class="cart">
+          <p>🛒 Se din ordre</p>
+        </div>
+        <div class="cart-dropdown" id="cartDropdown">
+          <p>Din kurv er tom.</p>
+        </div>
       </div>
-      <div class="cart-dropdown" id="cartDropdown">
-        <p>Din kurv er tom.</p>
+
+      <h2>Juices</h2>
+      <div class="product-grid">
+        <div class="product-item">
+          <img
+            src="https://res.cloudinary.com/dyvw6n7oj/image/upload/v1732800906/348s_vxywwk.jpg"
+            alt="Go Away DOC"
+          />
+          <h3 id="juiceName1"></h3>
+          <p id="juicePrice1"></p>
+          <button id="addJuice1" class="add-to-order">Tilføj til ordre</button>
+        </div>
+        <div class="product-item">
+          <img
+            src="https://res.cloudinary.com/dyvw6n7oj/image/upload/v1732791211/joe-the-juice-juice_zrspzd.jpg"
+            alt="Green Tonic"
+          />
+          <h3 id="juiceName2"></h3>
+          <p id="juicePrice2"></p>
+          <button id="addJuice2" class="add-to-order">Tilføj til ordre</button>
+        </div>
+        <div class="product-item">
+          <img
+            src="https://res.cloudinary.com/dyvw6n7oj/image/upload/v1732800379/348s_nuehly.jpg"
+            alt="Iron Man"
+          />
+          <h3 id="juiceName3"></h3>
+          <p id="juicePrice3"></p>
+          <button id="addJuice3" class="add-to-order">Tilføj til ordre</button>
+        </div>
+      </div>
+
+      <h2>Sandwiches</h2>
+      <div class="product-grid">
+        <div class="product-item">
+          <img
+            src="https://res.cloudinary.com/dyvw6n7oj/image/upload/v1732791265/47_qd18fq.jpg"
+            alt="JOEs Club"
+          />
+          <h3 id="sandwichName1"></h3>
+          <p id="sandwichPrice1"></p>
+          <button id="addSandwich1" class="add-to-order">
+            Tilføj til ordre
+          </button>
+        </div>
+        <div class="product-item">
+          <img
+            src="https://res.cloudinary.com/dyvw6n7oj/image/upload/v1732800473/Joe-and-the-Juice-Club-Sandwich-Sydney-Airport-Australia_tv2kpn.jpg"
+            alt="Avocado"
+          />
+          <h3 id="sandwichName2"></h3>
+          <p id="sandwichPrice2"></p>
+          <button id="addSandwich2" class="add-to-order">
+            Tilføj til ordre
+          </button>
+        </div>
+        <div class="product-item">
+          <img
+            src="https://res.cloudinary.com/dyvw6n7oj/image/upload/v1732800525/51_ang3yc.jpg"
+            alt="Tunacado"
+          />
+          <h3 id="sandwichName3"></h3>
+          <p id="sandwichPrice3"></p>
+          <button id="addSandwich3" class="add-to-order">
+            Tilføj til ordre
+          </button>
+        </div>
+      </div>
+
+      <h2>Coffee</h2>
+      <div class="product-grid">
+        <div class="product-item">
+          <img
+            src="https://res.cloudinary.com/dyvw6n7oj/image/upload/v1732800603/cafe-latte1-recipe_yu7olj.jpg"
+            alt="Latte 16oz"
+          />
+          <h3 id="coffeeName1"></h3>
+          <p id="coffeePrice1"></p>
+          <button id="addCoffee1" class="add-to-order">Tilføj til ordre</button>
+        </div>
+        <div class="product-item">
+          <img
+            src="https://res.cloudinary.com/dyvw6n7oj/image/upload/v1732800643/How_Much_Milk_Coffee_in_a_Cappuccino_cnwozu.jpg"
+            alt="Flat White"
+          />
+          <h3 id="coffeeName2"></h3>
+          <p id="coffeePrice2"></p>
+          <button id="addCoffee2" class="add-to-order">Tilføj til ordre</button>
+        </div>
+        <div class="product-item">
+          <img
+            src="https://res.cloudinary.com/dyvw6n7oj/image/upload/v1732801017/single_vs_double_espresso_29e34a2a-7623-417f-a000-a69fc2e89edb_lx49mj.jpg"
+            alt="Cappuccino"
+          />
+          <h3 id="coffeeName3"></h3>
+          <p id="coffeePrice3"></p>
+          <button id="addCoffee3" class="add-to-order">Tilføj til ordre</button>
+        </div>
       </div>
     </div>
-    
-    <h2>Juices</h2>
-    <div class="product-grid">
-      <div class="product-item">
-        <img src="https://res.cloudinary.com/dyvw6n7oj/image/upload/v1732800906/348s_vxywwk.jpg" alt="Go Away DOC" />
-        <h3 id="juiceName1"></h3>
-        <p id="juicePrice1"></p>
-        <button id="addJuice1" class="add-to-order">Tilføj til ordre</button>
-      </div>
-      <div class="product-item">
-        <img src="https://res.cloudinary.com/dyvw6n7oj/image/upload/v1732791211/joe-the-juice-juice_zrspzd.jpg" alt="Green Tonic" />
-        <h3 id="juiceName2"></h3>
-        <p id="juicePrice2"></p>
-        <button id="addJuice2" class="add-to-order">Tilføj til ordre</button>
-      </div>
-      <div class="product-item">
-        <img src="https://res.cloudinary.com/dyvw6n7oj/image/upload/v1732800379/348s_nuehly.jpg" alt="Iron Man" />
-        <h3 id="juiceName3"></h3>
-        <p id="juicePrice3"></p>
-        <button id="addJuice3" class="add-to-order">Tilføj til ordre</button>
-      </div>
-    </div>
-    
-    <h2>Sandwiches</h2>
-    <div class="product-grid">
-      <div class="product-item">
-        <img src="https://res.cloudinary.com/dyvw6n7oj/image/upload/v1732791265/47_qd18fq.jpg" alt="JOEs Club" />
-        <h3 id="sandwichName1"></h3>
-        <p id="sandwichPrice1"></p>
-        <button id="addSandwich1" class="add-to-order">Tilføj til ordre</button>
-      </div>
-      <div class="product-item">
-        <img src="https://res.cloudinary.com/dyvw6n7oj/image/upload/v1732800473/Joe-and-the-Juice-Club-Sandwich-Sydney-Airport-Australia_tv2kpn.jpg" alt="Avocado" />
-        <h3 id="sandwichName2"></h3>
-        <p id="sandwichPrice2"></p>
-        <button id="addSandwich2" class="add-to-order">Tilføj til ordre</button>
-      </div>
-      <div class="product-item">
-        <img src="https://res.cloudinary.com/dyvw6n7oj/image/upload/v1732800525/51_ang3yc.jpg" alt="Tunacado" />
-        <h3 id="sandwichName3"></h3>
-        <p id="sandwichPrice3"></p>
-        <button id="addSandwich3" class="add-to-order">Tilføj til ordre</button>
-      </div>
-    </div>
-    
-    <h2>Coffee</h2>
-    <div class="product-grid">
-      <div class="product-item">
-        <img src="https://res.cloudinary.com/dyvw6n7oj/image/upload/v1732800603/cafe-latte1-recipe_yu7olj.jpg" alt="Latte 16oz" />
-        <h3 id="coffeeName1"></h3>
-        <p id="coffeePrice1"></p>
-        <button id="addCoffee1" class="add-to-order">Tilføj til ordre</button>
-      </div>
-      <div class="product-item">
-        <img src="https://res.cloudinary.com/dyvw6n7oj/image/upload/v1732800643/How_Much_Milk_Coffee_in_a_Cappuccino_cnwozu.jpg" alt="Flat White" />
-        <h3 id="coffeeName2"></h3>
-        <p id="coffeePrice2"></p>
-        <button id="addCoffee2" class="add-to-order">Tilføj til ordre</button>
-      </div>
-      <div class="product-item">
-        <img src="https://res.cloudinary.com/dyvw6n7oj/image/upload/v1732801017/single_vs_double_espresso_29e34a2a-7623-417f-a000-a69fc2e89edb_lx49mj.jpg" alt="Cappuccino" />
-        <h3 id="coffeeName3"></h3>
-        <p id="coffeePrice3"></p>
-        <button id="addCoffee3" class="add-to-order">Tilføj til ordre</button>
-      </div>
-    </div>    
-  </div>
-  <script src="../js/products.js"></script>
+    <script src="../js/products.js"></script>
   </body>
 </html>

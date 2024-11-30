@@ -1,77 +1,76 @@
 body {
-    margin: 0;
-    padding: 0;
-    background-image: url('../IMG/Joe-and-the-juice-forside.png'); /* Link til dit billede */
-    background-size: cover; /* Sørger for, at billedet fylder hele siden */
-    background-position: center; /* Centrer billedet */
-    background-repeat: no-repeat; /* Forhindrer gentagelser */
-    height: 100vh; /* Fylder hele vinduets højde */
-    overflow: hidden; /* Fjern eventuelle scrollbars */
-    font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url("../IMG/Joe-and-the-juice-forside.png"); /* Link til dit billede */
+  background-size: cover; /* Sørger for, at billedet fylder hele siden */
+  background-position: center; /* Centrer billedet */
+  background-repeat: no-repeat; /* Forhindrer gentagelser */
+  height: 100vh; /* Fylder hele vinduets højde */
+  overflow: hidden; /* Fjern eventuelle scrollbars */
+  font-family: Arial, sans-serif;
 }
 
-
 .oversigt {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    background-color: #f8c6d8;
-    border-bottom: 1px solid #ccc;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box; 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #f8c6d8;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
 }
 
 .logo {
-    height: 50px;
-    border-radius: 50%;
+  height: 50px;
+  border-radius: 50%;
 }
 
 nav {
-    display: flex;
-    gap: 20px; 
+  display: flex;
+  gap: 20px;
 }
 
 nav a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-    font-size: 16px;
-    transition: color 0.3s ease;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  font-size: 16px;
+  transition: color 0.3s ease;
 }
 
 nav a:hover {
-    color: white; 
+  color: white;
 }
 
 .user-info {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 #navn {
-    display: flex;
-    color: #333;
-    font-size: 16px;
-    font-weight: bold; 
-    margin: 0; 
-    justify-content: flex-end;
-  }
+  display: flex;
+  color: #333;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+  justify-content: flex-end;
+}
 
-  #logout {
-    font-size: 16px;
-    padding: 8px 16px;
-    font-weight: bold; 
-    background-color: #f8c6d8;
-    color: #333;
-    border: none;
-    border-radius: 5px;
+#logout {
+  font-size: 16px;
+  padding: 8px 16px;
+  font-weight: bold;
+  background-color: #f8c6d8;
+  color: #333;
+  border: none;
+  border-radius: 5px;
 }
 
 #logout:hover {
-    background-color: white;
+  background-color: white;
 }
