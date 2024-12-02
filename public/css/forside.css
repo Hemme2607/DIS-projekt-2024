@@ -1,12 +1,11 @@
 body {
   margin: 0;
   padding: 0;
-  background-image: url("../IMG/Joe-and-the-juice-forside.png"); /* Link til dit billede */
-  background-size: cover; /* Sørger for, at billedet fylder hele siden */
-  background-position: center; /* Centrer billedet */
-  background-repeat: no-repeat; /* Forhindrer gentagelser */
-  height: 100vh; /* Fylder hele vinduets højde */
-  overflow: hidden; /* Fjern eventuelle scrollbars */
+  background-image: url("../IMG/Joe-and-the-juice-forside.png");
+  background-size: cover; 
+  background-position: center;
+  height: 100vh;
+  overflow: hidden;
   font-family: Arial, sans-serif;
 }
 
@@ -74,3 +73,51 @@ nav a:hover {
 #logout:hover {
   background-color: white;
 }
+
+.start-order {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px 40px;
+  border-radius: 10px;
+}
+
+.start-order h1 {
+  font-size: 36px;
+  font-weight: bold;
+  margin: 0;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.start-order p {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px 0 20px;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.order-button {
+  display: inline-block;
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  background-color: #f8c6d8; 
+  padding: 12px 24px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.order-button:hover {
+  background-color: #e89cba;
+}
+
