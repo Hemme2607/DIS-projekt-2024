@@ -211,3 +211,5 @@ app.post("/api/orders", (req, res) => {
     res.status(500).json({ error: "Kunne ikke gemme ordren." });
   }
 });
+
+//Opretter et endpoint som skal stå for at hente alle stempler fra databasen
