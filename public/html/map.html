@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Joe & the juice - Kort</title>
+    <link rel="stylesheet" href="../css/map.css" />
+
+    <!-- Leaflet CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+  </head>
+
+  <body>
+    <div class="oversigt">
+      <img
+        src="../IMG/joe-and-the-juice-logo.png"
+        alt="Joe & The Juice logo"
+        class="logo"
+      />
+      <nav>
+        <a href="forside.html">WELCOME</a>
+        <a href="products.html">MENU</a>
+        <a href="stempel.html">STAMPS</a>
+        <a href="myprofile.html">MY PROFILE</a>
+      </nav>
+      <div class="user-info">
+        <h1 id="navn">Brugernavnet</h1>
+        <button id="logout">Log ud</button>
+      </div>
+    </div>
+
+    <div class="sidebar">
+      <h2>SELECT A STORE TO COMPLETE YOUR ORDER</h2>
+      <div id="store-list">
+        <!-- Dynamisk genererede butikslokationer kommer her -->
+      </div>
+    </div>
+
+    <!-- Kortcontainer -->
+    <div id="map"></div>
+
+    <!-- Container til boksen i højre hjørne -->
+    <div id="order-box" class="hidden"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="../js/map.js"></script>
+  </body>
+</html>

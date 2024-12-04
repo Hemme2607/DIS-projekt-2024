@@ -128,7 +128,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     checkoutButton.style.cursor = "pointer";
 
     checkoutButton.addEventListener("click", () => {
-      window.location.href = "/payment.html"; // Naviger til betalingssiden
+      window.location.href = "/map.html";
     });
 
     cartTotal.appendChild(checkoutButton);

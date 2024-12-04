@@ -212,4 +212,18 @@ app.post("/api/orders", (req, res) => {
   }
 });
 
+// API-endpoint for at hente butikker
+app.get("/api/Stores", (req, res) => {
+  try {
+    const stmt = db.prepare(
+      "SELECT name, address, lat, lng, hours FROM Stores"
+    );
+    const rows = stmt.all(); // Hent alle rækker fra tabellen
+    res.json(rows); // Returnér dataen som JSON
+  } catch (error) {
+    console.error("Database error:", error.message);
+    res.status(500).json({ error: error.message });
+  }
+});
+
 //Opretter et endpoint som skal stå for at hente alle stempler fra databasen

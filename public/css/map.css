@@ -1,0 +1,190 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom, #ffffff 20%, #f8c6d8 60%);
+  color: #1a1a1a;
+  height: 100vh;
+  background-attachment: fixed;
+}
+
+.oversigt {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #f8c6d8;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  height: 50px;
+  border-radius: 50%;
+}
+
+nav {
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: white;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+#navn {
+  color: #333;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+#logout {
+  font-size: 16px;
+  padding: 8px 16px;
+  font-weight: bold;
+  background-color: #f8c6d8;
+  color: #333;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#logout:hover {
+  background-color: #e0a3bd;
+}
+
+#map {
+  position: absolute;
+  top: 70px; /* Plads til headeren */
+  left: 31.8%; /* Juster, så kortet starter efter sidebar */
+  width: 75%; /* Fylder det resterende område ved siden af sidebar */
+  height: calc(100vh - 70px); /* Fylder resten af vinduet undtagen headeren */
+}
+
+.sidebar {
+  width: 30%; /* Gør sidebar bredere */
+  height: calc(100vh - 70px); /* Fylder hele højden, minus header */
+  position: fixed;
+  top: 70px; /* Start under header */
+  left: 0;
+  background-color: #333; /* Mørk baggrund */
+  color: white;
+  overflow-y: auto; /* Scrollbar, hvis der er for mange butikker */
+  padding: 10px 15px; /* Juster padding for mere plads */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid white;
+  padding-bottom: 10px;
+}
+
+/* Stil for butikker i venstre boks */
+.store {
+  margin-bottom: 20px; /* Plads mellem boksene */
+  padding: 15px; /* Indvendig afstand */
+  border: 1px solid #ccc; /* Lys kant */
+  border-radius: 5px;
+  background-color: white; /* Hvid baggrund */
+  color: black; /* Sort tekst */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Skyggeeffekt */
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.store:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.store h3 {
+  font-size: 18px;
+  margin: 0 0 10px;
+  color: #333;
+}
+
+.store p {
+  font-size: 14px;
+  margin: 5px 0;
+  color: #555;
+}
+
+.order-btn {
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: #f8c6d8;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.order-btn:hover {
+  background-color: #e09bb5;
+}
+
+/* Styling af boksen i højre hjørne */
+#order-box {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 250px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#order-box h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+#order-box button {
+  padding: 10px;
+  background-color: #f8c6d8;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+}
+
+#order-box button:hover {
+  background-color: #e0b1c2;
+}
+
+/* Skjul boksen som standard */
+.hidden {
+  display: none;
+}
