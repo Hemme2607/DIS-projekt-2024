@@ -226,4 +226,54 @@ app.get("/api/Stores", (req, res) => {
   }
 });
 
-//Opretter et endpoint som skal stå for at hente alle stempler fra databasen
+//Opretter et endpoint som skal stå for at hente alle stempler fra databasen ud fra brugerens id
+app.get("/api/stamps/:userId", (req, res) => {
+  const { userId } = req.params;
+  try {
+    const stmt = db.prepare("SELECT * FROM stamps WHERE userId = ?");
+    const stempler = stmt.all(userId);
+    res.status(200).json(stempler);
+  } catch (error) {
+    console.error("Database error:", error.message);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+//Opretter et endpoint som skal opdatere antallet af stempler i databasen
+app.post("/api/stamps", (req, res) => {
+  const { userId, productCategory } = req.body;
+  try {
+    //Tjekker om brugeren allerede har stempel(er) i databasen
+    const stampStmt = db.prepare(
+      "SELECT * FROM stamps WHERE userId = ? AND product_category = ?"
+    );
+    const stamp = stampStmt.get(userId, productCategory);
+    if (stamp) {
+      //Opdater eksisterende stempel
+      const opdateretCount = stamp.stamp_count + 1;
+      if (opdateretCount === 10) {
+        //resetter stempel count til 0
+        db.prepare(
+          "UPDATE stamps SET stamp_count = 0 WHERE userId = ? AND product_category = ?"
+        ).run(userId, productCategory);
+        return res
+          .status(200)
+          .json({ message: "Nice, You earned a free product!" });
+      } else {
+        db.prepare(
+          "UPDATE stamps SET stamp_count = ? WHERE userId = ? AND product_category = ?"
+        ).run(opdateretCount, userId, productCategory);
+        return res.status(200).json({ message: "Stamp count updated" });
+      }
+    } else {
+      //Opret nyt stempel
+      db.prepare(
+        "INSERT INTO stamps (userId, product_category, stamp_count) VALUES (?, ?, 1)"
+      ).run(userId, productCategory);
+    }
+    res.status(200).json({ message: "Stamp was updated correctly" });
+  } catch (error) {
+    console.error("Error updating stamps:", error.message);
+    res.status(500).json({ error: error.message });
+  }
+});

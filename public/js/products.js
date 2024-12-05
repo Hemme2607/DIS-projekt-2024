@@ -168,12 +168,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   // **4. Funktion: Tilføj produkter til kurven**
-  function addToCart(productId, productName, productPrice, Category) {
+  function addToCart(productId, productName, productPrice, productCategory) {
     cartItems.push({
       productId: productId,
       name: productName,
       price: productPrice,
-      Category: Category,
+      category: productCategory,
     });
     sessionStorage.setItem("cartItems", JSON.stringify(cartItems)); // Gem i sessionStorage
     console.log("Opdateret cartItems:", cartItems); // Debugging
@@ -209,4 +209,21 @@ document.addEventListener("DOMContentLoaded", async () => {
       addToCart(productId, productName, productPrice, productCategory);
     });
   });
+  async function addStamp(userId, productCategory) {
+    try {
+      const response = await fetch("/api/stamps", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ userId, productCategory }),
+      });
+      const data = await response.json();
+      if (data.message === "Nice, You earned a free product!") {
+        alert("Du har optjent en gratis vare!");
+      }
+    } catch (error) {
+      console.error("Kunne ikke opdatere stempel:", error);
+    }
+  }
 });
