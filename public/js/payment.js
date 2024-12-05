@@ -98,4 +98,11 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("Kunne ikke opdatere stempel", error);
     }
   }
+  //tillader også at logge ud
+  const logudKnap = document.getElementById("logout");
+  logudKnap.addEventListener("click", () => {
+    sessionStorage.clear();
+    alert("Du er nu logget ud");
+    window.location.href = "/login.html";
+  });
 });

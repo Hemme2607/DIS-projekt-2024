@@ -209,21 +209,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       addToCart(productId, productName, productPrice, productCategory);
     });
   });
-  async function addStamp(userId, productCategory) {
-    try {
-      const response = await fetch("/api/stamps", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ userId, productCategory }),
-      });
-      const data = await response.json();
-      if (data.message === "Nice, You earned a free product!") {
-        alert("Du har optjent en gratis vare!");
-      }
-    } catch (error) {
-      console.error("Kunne ikke opdatere stempel:", error);
-    }
-  }
+  //tillader også at logge ud
+  const logudKnap = document.getElementById("logout");
+  logudKnap.addEventListener("click", () => {
+    sessionStorage.clear();
+    alert("Du er nu logget ud");
+    window.location.href = "/login.html";
+  });
 });
