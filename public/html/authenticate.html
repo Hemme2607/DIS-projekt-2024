@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/authenticate.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="logo">
+        <img
+          src="../IMG/joe-and-the-juice-logo.png"
+          alt="Joe & The Juice Logo"
+        />
+      </div>
+      <h1>Verify Code</h1>
+      <p>Please provide the authentication code which is sent to your phone:</p>
+      <div class="form-group">
+        <label for="authCode">Confirmation Code</label>
+        <input
+          type="text"
+          id="authCodeInput"
+          name="authCode"
+          placeholder="Enter your code"
+          required
+        />
+      </div>
+      <button id="verifyButton" type="submit">Verify</button>
+    </div>
+  </body>
+  <script src="../js/authenticate.js"></script>
+</html>

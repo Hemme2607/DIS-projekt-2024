@@ -1,6 +1,5 @@
 //Henter brugeren fra session storage
 const user = JSON.parse(sessionStorage.getItem("user"));
-document.getElementById("navn").textContent = user.navn;
 
 // Globale arrays til produktkategorier
 let juices = [];
@@ -9,7 +8,22 @@ let coffee = [];
 
 document.addEventListener("DOMContentLoaded", async () => {
   try {
-    // **1. Hent produktdata og opdater sektionerne**
+    // **1. Henter brugerenes data**
+    const userResponse = await fetch("/getUserData", {
+      method: "GET",
+      credentials: "include",
+    });
+
+    if (!userResponse.ok) {
+      throw new Error("Du er ikke logget ind");
+    }
+
+    const user = await userResponse.json();
+
+    //Opdatere brugerenes data
+    document.getElementById("navn").innerHTML = user.user.navn;
+
+    // **2. Hent produktdata og opdater sektionerne**
     const response = await fetch("/api/products");
     const products = await response.json();
 
@@ -59,9 +73,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   } catch (error) {
     console.error("Kunne ikke hente produkter:", error);
+    alert("Du ikke logget ind");
+    window.location.href = "/login.html";
+    return;
   }
 
-  // **2. Håndtering af kurven og sessionStorage**
+  // **3. Håndtering af kurven og sessionStorage**
   const cartDropdown = document.getElementById("cartDropdown");
   const cartButton = document.querySelector(".cart");
   let cartItems = JSON.parse(sessionStorage.getItem("cartItems")) || []; // Hent fra sessionStorage
@@ -161,13 +178,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Opdater dropdown ved indlæsning
   updateCart();
 
-  // **3. Lyt efter ændringer i sessionStorage**
+  // **4. Lyt efter ændringer i sessionStorage**
   window.addEventListener("storage", () => {
     cartItems = JSON.parse(sessionStorage.getItem("cartItems")) || [];
     updateCart(); // Opdater dropdown, når sessionStorage ændres
   });
 
-  // **4. Funktion: Tilføj produkter til kurven**
+  // **5. Funktion: Tilføj produkter til kurven**
   function addToCart(productId, productName, productPrice, productCategory) {
     cartItems.push({
       productId: productId,
@@ -209,11 +226,19 @@ document.addEventListener("DOMContentLoaded", async () => {
       addToCart(productId, productName, productPrice, productCategory);
     });
   });
-  //tillader også at logge ud
+  //Tillader også at logge ud
   const logudKnap = document.getElementById("logout");
-  logudKnap.addEventListener("click", () => {
-    sessionStorage.clear();
-    alert("Du er nu logget ud");
-    window.location.href = "/login.html";
+  logudKnap.addEventListener("click", async () => {
+    const response = await fetch("/logout", {
+      method: "POST",
+      credentials: "include",
+    });
+
+    if (response.ok) {
+      alert("Du er nu logget ud");
+      window.location.href = "/login.html";
+    } else {
+      alert("Kunne ikke logge ud");
+    }
   });
 });

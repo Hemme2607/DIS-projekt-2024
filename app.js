@@ -4,6 +4,7 @@ const db = require("./database");
 const bcrypt = require("bcrypt");
 const path = require("path");
 const twilio = require("twilio");
+const cookieParser = require("cookie-parser");
 
 const app = express();
 const PORT = 3000;
@@ -15,12 +16,28 @@ const client = twilio(accountSid, authToken);
 
 // Aktivér CORS
 app.use(cors());
-
-// Parse JSON
 app.use(express.json());
+app.use(cookieParser()); // Middleware til at læse cookies
 
 // Serve static files from the "public" directory
 app.use(express.static(path.join(__dirname, "public")));
+
+//Beskyttelse af endpoints med middleware
+function authenticateMiddleware(req, res, next) {
+  const token = req.cookies.token;
+  // Hvis der ikke er en token, sendes en fejlbesked
+  if (!token) {
+    return res.status(401).send("Unauthorized");
+  }
+  const user = db.prepare("SELECT * FROM users WHERE id = ?").get(token);
+  if (!user) {
+    return res.status(401).send("Unauthorized");
+  }
+  // Gemmer brugerens data i req.user, så det kan bruges i de efterfølgende endpoints
+
+  req.user = user;
+  next();
+}
 
 // Sætter welcome.html som default side
 app.get("/", (req, res) => {
@@ -42,6 +59,28 @@ app.get("/:page.html", (req, res) => {
 // Start serveren
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
+});
+
+//Laver et endpoint til at hente brugerdata, bruger middleware til at beskytte endpointet så kun brugere med en gyldig token kan tilgå det
+app.get("/getUserData", authenticateMiddleware, (req, res) => {
+  try {
+    const user = req.user;
+    res.status(200).json({ user });
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).send({ error: "Internal server error" });
+  }
+});
+
+//Laver et endpoint til at logge brugeren ud
+app.post("/logout", (req, res) => {
+  try {
+    res.cookie("token", "", { maxAge: 0, httpOnly: true, sameSite: "strict" });
+    res.status(200).send("User logged out");
+  } catch {
+    console.error("Error, when trying to log out", error);
+    res.status(500).send({ error: "Kunne ikke logge ud" });
+  }
 });
 
 //Laver et endpoint til at oprette en bruger
@@ -105,6 +144,13 @@ app.post("/login", async (req, res) => {
     if (!passwordMatch) {
       return res.status(401).json({ error: "Invalid email or password" });
     }
+    //Opretter en cookie med brugerens id
+    res.cookie("token", user.id, {
+      httpOnly: true,
+      sameSite: "strict",
+      maxAge: 7200000, // 2 timer
+    });
+
     //Returnerer brugerens id, navn og email
     res.status(200).json({
       id: user.id,
@@ -125,17 +171,20 @@ let authenticateMessage = {};
 //Laver et endpoint til at sende en SMS med henblik på at autentificere brugeren
 app.post("/authenticateUser", async (req, res) => {
   try {
-    const { email } = req.body;
-    //henter nu brugerens telefonnummer ud fra email
-    const stmt = db.prepare("SELECT telefon FROM users WHERE email = ?");
-    const user = stmt.get(email);
-
+    const userId = req.cookies.token;
+    if (!userId) {
+      return res.status(401).json({ error: "Unauthorized" });
+    }
+    //henter telefonnummeret fra brugeren i databasen
+    const user = db
+      .prepare("SELECT telefon FROM users WHERE id = ?")
+      .get(userId);
     if (!user) {
       return res.status(404).json({ error: "Brugeren findes ikke" });
     }
     //Genererer en tilfældig 5-cifret kode
     const randomCode = Math.floor(10000 + Math.random() * 90000);
-    authenticateMessage[email] = randomCode;
+    authenticateMessage[userId] = randomCode;
     //Sender SMS til brugerens telefonnummer
     await client.messages.create({
       from: "+1 850 972 2311",
@@ -152,19 +201,38 @@ app.post("/authenticateUser", async (req, res) => {
 //Laver et endpoint til at tjekke om den indtastede kode matcher den genererede kode
 app.post("/checkAuthCode", async (req, res) => {
   try {
-    const { email, code } = req.body;
-    const authenticateCode = authenticateMessage[email];
-    //Bruger parseInt for at sikre at koden er et tal
-    if (parseInt(code) === authenticateCode) {
-      //Sletter koden fra objektet, så den ikke kan bruges igen.
-      delete authenticateMessage[email];
-      res.status(200).json({ message: "Koden matcher" });
-    } else {
-      res.status(400).json({ error: "Koden matcher ikke" });
+    const { code } = req.body;
+
+    //Henter token fra cookie
+    const userId = req.cookies.token;
+    if (!userId) {
+      console.log("No userId found in cookies");
+      return res.status(401).json({ error: "Unauthorized" });
     }
+
+    const authenticateCode = authenticateMessage[userId];
+    if (!authenticateCode) {
+      console.error(`No code found for user: ${userId}`);
+      return res.status(400).json({ error: "No code found" });
+    }
+
+    if (parseInt(code) !== parseInt(authenticateCode)) {
+      console.error(
+        `Invalid code. Expected: ${authenticateCode}, Received: ${code}`
+      );
+      return res.status(400).json({ error: "Invalid code" });
+    }
+
+    //Sletter koden fra objektet, så den ikke kan bruges igen
+    delete authenticateMessage[userId];
+
+    //Sender succesbesked
+    res.status(200).json({ message: "Koden er korrekt" });
   } catch (error) {
     console.log("Der er sket en fejl:", error);
-    res.status(500).send({ error: "Kunne ikke tjekke koden" });
+    res
+      .status(500)
+      .send({ error: "Kunne ikke tjekke koden, da en serverfejl opstod" });
   }
 });
 

@@ -1,19 +1,32 @@
 document.addEventListener("DOMContentLoaded", async () => {
-  //Henter brugerens data fra session storage
-  const user = JSON.parse(sessionStorage.getItem("user"));
-
-  if (!user) {
-    alert("Du er ikke logget ind");
-    window.location.href = "/login.html";
-    return;
-  }
-
-  document.getElementById("navn").textContent = user.navn;
-
-  //Henter stempler fra databasen ud fra ID
+  //Starter med at hente brugerens data
   try {
-    const response = await fetch(`/api/stamps/${user.id}`);
-    const stempler = await response.json();
+    const response = await fetch("/getUserData", {
+      method: "GET",
+      credentials: "include",
+    });
+
+    if (!response.ok) {
+      throw new Error("Du er ikke logget ind");
+    }
+
+    const user = await response.json();
+
+    //Opdatere brugeren navn
+    document.getElementById("navn").textContent = user.user.navn;
+
+    //Henter stempler fra databasen ud fra ID
+    const stemplerResponse = await fetch(`/api/stamps/${user.user.id}`, {
+      method: "GET",
+      credentials: "include",
+    });
+
+    if (!stemplerResponse.ok) {
+      throw new Error("Kunne ikke hente stempler");
+    }
+
+    //Den modtagne data fra databasen bliver gemt i en variabel
+    const stempler = await stemplerResponse.json();
 
     stempler.forEach((stempel) => {
       const div = document.getElementById(
@@ -26,14 +39,29 @@ document.addEventListener("DOMContentLoaded", async () => {
         `;
       }
     });
-  } catch {
-    console.log("Kunne ikke hente stempler");
+  } catch (error) {
+    console.error("Fejl:", error.message);
+    alert("Du er ikke logget ind");
+    window.location.href = "/login.html";
   }
 
-  //Henter log ud knap fra html
-  document.getElementById("logout").addEventListener("click", () => {
-    //Fjerner brugerens data fra session storage og sender brugeren til login siden
-    sessionStorage.removeItem("user");
-    window.location.href = "/login.html";
+  //Muligør logud knapq
+  document.getElementById("logout").addEventListener("click", async () => {
+    try {
+      const response = await fetch("/logout", {
+        method: "POST",
+        credentials: "include",
+      });
+
+      if (!response.ok) {
+        throw new Error("Kunne ikke logge ud");
+      }
+
+      alert("Du er nu logget ud");
+      window.location.href = "/login.html";
+    } catch (error) {
+      console.error("Fejl ved log ud:", error.message);
+      alert("Der opstod en fejl under log ud.");
+    }
   });
 });

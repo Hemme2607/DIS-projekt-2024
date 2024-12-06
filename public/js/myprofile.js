@@ -1,22 +1,40 @@
-//Henter brugeren fra session storage
-const user = JSON.parse(sessionStorage.getItem("user"));
+document.addEventListener("DOMContentLoaded", async () => {
+  try {
+    const response = await fetch("/getUserData");
 
-if (!user) {
-  //Hvis brugeren ikke er logget ind, sendes brugeren til login siden
-  alert("Du er ikke logget ind");
-  window.location.href = "/login.html";
-} else {
-  document.getElementById("profilNavn").innerHTML = user.navn;
-  document.getElementById("profilEmail").innerHTML = user.email;
-  document.getElementById("profilTelefon").innerHTML = user.telefon;
-  document.getElementById("profileDob").innerHTML = user.fDato;
-  document.getElementById("navn").textContent = user.navn;
-}
+    if (!response.ok) {
+      throw new Error("Error getting user data");
+    }
 
-//tillader også at logge ud
-const logudKnap = document.getElementById("logout");
-logudKnap.addEventListener("click", () => {
-  sessionStorage.clear();
-  alert("Du er nu logget ud");
-  window.location.href = "/login.html";
+    const user = await response.json();
+
+    //Opdatere brugerens data
+    document.getElementById("profilNavn").innerHTML = user.user.navn;
+    document.getElementById("profilEmail").innerHTML = user.user.email;
+    document.getElementById("profilTelefon").innerHTML = user.user.telefon;
+    document.getElementById("profileDob").innerHTML = user.user.fDato;
+
+    //Muliggør logud knap
+    document.getElementById("logout").addEventListener("click", async () => {
+      try {
+        const response = await fetch("/logout", {
+          method: "POST",
+          credentials: "include",
+        });
+
+        if (!response.ok) {
+          throw new Error("Kunne ikke logge ud");
+        }
+
+        alert("Du er nu logget ud");
+        window.location.href = "/login.html";
+      } catch (error) {
+        console.error("Fejl ved log ud:", error.message);
+        alert("Der opstod en fejl under log ud.");
+      }
+    });
+  } catch (error) {
+    alert("You are not logged in");
+    window.location.href = "/login.html";
+  }
 });

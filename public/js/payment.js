@@ -1,10 +1,28 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   const cartProducts = document.getElementById("cartProducts"); // Refererer til elementet med id'et cartProducts
   const payButton = document.getElementById("payButton"); // Knappen "Betal nu"
 
-  // 1. Hent produkter fra sessionStorage
+  //Her hentes brugerdata
+  let user;
+  try {
+    const userResponse = await fetch("/getUserData", {
+      method: "GET",
+      credentials: "include", // Sender cookies med
+    });
+
+    if (!userResponse.ok) {
+      throw new Error("Du er ikke logget ind");
+    }
+
+    user = await userResponse.json();
+  } catch {
+    alert("Du er ikke logget ind");
+    window.location.href = "/login.html";
+    return;
+  }
+
+  //Hent produkter fra sessionStorage
   const cartItems = JSON.parse(sessionStorage.getItem("cartItems")) || [];
-  const user = JSON.parse(sessionStorage.getItem("user")); // Hent user-data fra sessionStorage
 
   // 2. Hvis kurven er tom, vis en besked og deaktiver "Betal nu"-knappen
   if (cartItems.length === 0) {
@@ -50,11 +68,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const orderData = {
-      userID: user.id,
+      userID: user.user.id,
       products: cartItems, // Send hele kurven inkl. category
     };
 
     try {
+      console.log("orderData:", orderData);
       const response = await fetch("/api/orders", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -63,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (response.ok) {
         //Efter order er gemt, så skal opdateres antal stempler
-        await updateStamps(user.id, cartItems);
+        await updateStamps(user.user.id, cartItems);
 
         alert("Ordren er gennemført!");
         sessionStorage.removeItem("cartItems"); // Tøm kurven
@@ -98,11 +117,4 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("Kunne ikke opdatere stempel", error);
     }
   }
-  //tillader også at logge ud
-  const logudKnap = document.getElementById("logout");
-  logudKnap.addEventListener("click", () => {
-    sessionStorage.clear();
-    alert("Du er nu logget ud");
-    window.location.href = "/login.html";
-  });
 });

@@ -27,51 +27,31 @@ loginKnap.addEventListener("click", async () => {
       body: JSON.stringify(loginData),
     });
 
+    //Hvis login fejler, kommer der en fejl
     if (!response.ok) {
       const data = await response.json();
       throw new Error(data.error || "Fejl ved login");
     }
-    //Gemmer brugerens data i en variabel, så vi kan gemme i session storage
-    const userData = await response.json();
 
     //Step 2: Nu sendes bekræftelses koden til brugeren via SMS
     const authResponse = await fetch("/authenticateUser", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email }),
+      credentials: "include",
     });
 
+    //Hvis SMS'en ikke sendes korrekt, kastes en fejl
     if (!authResponse.ok) {
       const data = await authResponse.json();
       throw new Error(
         data.error || "Fejl ved autentificering, beskeden blev ikke sendt"
       );
     }
-    alert("Beskræftelseskode er sendt til din telefon");
 
-    //Step 3: Brugeren indtaster bekræftelseskoden, og vi tjekker om den er korrekt
-    const authCode = prompt("Indtast din bekræftelseskode");
-    const checkAuthCodeResponse = await fetch("/checkAuthCode", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, code: authCode }),
-    });
-
-    if (!checkAuthCodeResponse.ok) {
-      const data = await checkAuthCodeResponse.json();
-      throw new Error(data.error || "Fejl ved autentificering, forkert kode");
-    }
-    //Gemmer brugerens i session storage
-    sessionStorage.setItem("user", JSON.stringify(userData));
-
-    alert("Login succesfuld");
-    window.location.href = "/forside.html";
+    // Step 3: Omdiriger til authCode.html for at indtaste bekræftelseskoden
+    alert("Bekræftelseskode er sendt til din telefon.");
+    window.location.href = "/authenticate.html"; // Send brugeren til authCode.html
   } catch (error) {
-    console.error("Error:", error);
+    console.error("Error:", error.message);
     alert(error.message);
   }
 });

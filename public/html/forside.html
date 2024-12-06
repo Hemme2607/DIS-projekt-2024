@@ -7,6 +7,14 @@
     <link rel="stylesheet" href="../css/forside.css" />
   </head>
   <body>
+    <div id="cookie-popup" class="cookie-popup hidden">
+      <p>
+        We are using cookies to give you the best experience on our website.
+        Please accept or decline our usage of cookies.
+      </p>
+      <button id="accept-cookie">Accept</button>
+      <button id="reject-cookie">Decline</button>
+    </div>
     <div class="oversigt">
       <img
         src="../IMG/joe-and-the-juice-logo.png"
@@ -14,7 +22,6 @@
         class="logo"
       />
       <nav>
-        <a href="welcome.html">WELCOME</a>
         <a href="products.html">MENU</a>
         <a href="stempel.html">STAMPS</a>
         <a href="myprofile.html">MY PROFILE</a>
@@ -22,13 +29,16 @@
       <div class="user-info">
         <h1 id="navn">brugernavnet</h1>
         <button id="logout">Log ud</button>
-      </div>     
+      </div>
     </div>
     <div class="start-order">
       <h1>START YOUR ORDER</h1>
-      <p>Fresh juices, healthy shakes and delicious sandwiches. What are you in for today?</p>
+      <p>
+        Fresh juices, healthy shakes and delicious sandwiches. What are you in
+        for today?
+      </p>
       <a href="products.html" class="order-button">ORDER NOW</a>
-    </div> 
+    </div>
+    <script src="../js/forside.js"></script>
   </body>
-  <script src="../js/stempel.js"></script>
 </html>
