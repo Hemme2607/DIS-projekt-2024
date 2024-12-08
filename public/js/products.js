@@ -1,6 +1,3 @@
-//Henter brugeren fra session storage
-const user = JSON.parse(sessionStorage.getItem("user"));
-
 // Globale arrays til produktkategorier
 let juices = [];
 let sandwiches = [];
