@@ -7,7 +7,7 @@ const twilio = require("twilio");
 const cookieParser = require("cookie-parser");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000; // Porte serverene skal køre på
 
 // Twilio information til SMS
 const accountSid = "AC0f6185bce4bd85dc1bb350b4127f1d89";
