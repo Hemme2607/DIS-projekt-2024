@@ -148,6 +148,8 @@ app.post("/login", async (req, res) => {
     res.cookie("token", user.id, {
       httpOnly: true,
       sameSite: "strict",
+      //sikrer at cookien kun sendes over https
+      secure: true,
       maxAge: 7200000, // 2 timer
     });
 

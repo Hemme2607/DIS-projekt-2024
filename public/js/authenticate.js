@@ -30,7 +30,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
 
       // Hvis brugerdata er til stede, sendes brugeren til forsiden
-      alert("The confirmation code is correct");
       window.location.href = "/forside.html";
     } catch (error) {
       console.error("Error:", error);

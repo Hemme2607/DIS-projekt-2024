@@ -56,8 +56,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (!response.ok) {
         throw new Error("Kunne ikke logge ud");
       }
-
-      alert("Du er nu logget ud");
       window.location.href = "/login.html";
     } catch (error) {
       console.error("Fejl ved log ud:", error.message);

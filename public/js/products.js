@@ -232,7 +232,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     if (response.ok) {
-      alert("Du er nu logget ud");
       window.location.href = "/login.html";
     } else {
       alert("Kunne ikke logge ud");

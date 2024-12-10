@@ -45,7 +45,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       });
       if (logoutResponse.ok) {
         document.cookie = "token=; Max-Age=0; path=/";
-        alert("Du er nu logget ud");
         window.location.href = "/login.html";
       } else {
         alert("Der skete en fejl, prøv igen");
