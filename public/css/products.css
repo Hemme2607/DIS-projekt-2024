@@ -76,7 +76,7 @@ body {
 
 .products-container {
   text-align: center;
-  padding: 120px 20px 20px; 
+  padding: 120px 20px 20px;
 }
 
 .product-grid {
@@ -89,16 +89,16 @@ body {
 .product-item {
   background: rgba(255, 255, 255, 0.95);
   border: 2px solid #f8c6d8;
-  border-radius: 15px; 
+  border-radius: 15px;
   padding: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   text-align: center;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .product-item:hover {
-  transform: scale(1.05); 
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); 
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
 .product-item img {
@@ -120,37 +120,35 @@ body {
 
 .add-to-order {
   background-color: #ff88aa;
-  color: white; 
-  border: none; 
-  border-radius: 20px; 
+  color: white;
+  border: none;
+  border-radius: 20px;
   padding: 10px 20px;
-  font-size: 20px; 
+  font-size: 20px;
   font-weight: bold;
-  cursor: pointer; 
-  width: 90%; 
-  text-align: center; 
-  margin-top: 10px; 
-  transition: background-color 0.3s, transform 0.2s; 
+  cursor: pointer;
+  width: 90%;
+  text-align: center;
+  margin-top: 10px;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 .add-to-order:hover {
-  background-color: #ff6699; 
-  transform: scale(1.05); 
+  background-color: #ff6699;
+  transform: scale(1.05);
 }
 
 .add-to-order:active {
-  background-color: #ff5077; 
-  transform: scale(0.95); 
+  background-color: #ff5077;
+  transform: scale(0.95);
 }
 
-/* Kurven oppe i højre hjørne */
-/* Style for kurven */
 .cart-container {
   position: fixed;
   top: 20%;
   right: 20px;
   width: 200px;
-  z-index: 10; /* Sørg for, at den vises foran andre elementer */
+  z-index: 10;
 }
 
 .cart {
@@ -190,4 +188,3 @@ body {
   color: #333;
   font-size: 14px;
 }
-

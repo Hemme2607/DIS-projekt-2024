@@ -75,6 +75,7 @@ app.get("/getUserData", authenticateMiddleware, (req, res) => {
 //Laver et endpoint til at logge brugeren ud
 app.post("/logout", (req, res) => {
   try {
+    //Her slettes cookien
     res.cookie("token", "", { maxAge: 0, httpOnly: true, sameSite: "strict" });
     res.status(200).send("User logged out");
   } catch {
@@ -86,6 +87,7 @@ app.post("/logout", (req, res) => {
 //Laver et endpoint til at oprette en bruger
 app.post("/users", async (req, res) => {
   try {
+    //Requester brugerens data fra body
     const { navn, email, password, telefon, fDato } = req.body;
 
     //Valider at email skal indeholde et "@" "."
@@ -109,6 +111,7 @@ app.post("/users", async (req, res) => {
     //Hasher passwordet
     const hashedPassword = await bcrypt.hash(password, 10);
 
+    //Indsætter brugerens data i databasen
     const stmt = db.prepare(
       "INSERT INTO users (navn, email, password, telefon, fDato) VALUES (?, ?, ?, ?, ?)"
     );
@@ -184,7 +187,7 @@ app.post("/authenticateUser", async (req, res) => {
     if (!user) {
       return res.status(404).json({ error: "Brugeren findes ikke" });
     }
-    //Genererer en tilfældig 5-cifret kode
+    //Genererer en tilfældig 5-cifret kode, som skal sendes til brugerens telefonnummer
     const randomCode = Math.floor(10000 + Math.random() * 90000);
     authenticateMessage[userId] = randomCode;
     //Sender SMS til brugerens telefonnummer
@@ -211,13 +214,15 @@ app.post("/checkAuthCode", async (req, res) => {
       console.log("No userId found in cookies");
       return res.status(401).json({ error: "Unauthorized" });
     }
-
+    //Henter den genererede kode fra objektet og gemmer den i en variabel
     const authenticateCode = authenticateMessage[userId];
+    //Hvis der ikke er nogen kode, sendes en fejlbesked
     if (!authenticateCode) {
       console.error(`No code found for user: ${userId}`);
       return res.status(400).json({ error: "No code found" });
     }
 
+    //Sammenligner den indtastede kode med den genererede kode
     if (parseInt(code) !== parseInt(authenticateCode)) {
       console.error(
         `Invalid code. Expected: ${authenticateCode}, Received: ${code}`

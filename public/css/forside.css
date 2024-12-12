@@ -9,7 +9,6 @@ body {
   font-family: Arial, sans-serif;
 }
 
-/* Cookie-popup styling */
 .cookie-popup {
   position: fixed;
   bottom: 10px;
@@ -49,7 +48,6 @@ body {
   display: none;
 }
 
-/* Resten af siden */
 .oversigt {
   display: flex;
   align-items: center;
