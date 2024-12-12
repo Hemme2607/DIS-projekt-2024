@@ -1,11 +1,14 @@
 document.addEventListener("DOMContentLoaded", async () => {
   try {
+    //Henter brugerens data
     const response = await fetch("/getUserData");
 
+    //Hvis responsen ikke er ok, kastes en fejl
     if (!response.ok) {
       throw new Error("Error getting user data");
     }
 
+    //Gemmer brugerens data i en variabel
     const user = await response.json();
 
     //Opdatere brugerens data

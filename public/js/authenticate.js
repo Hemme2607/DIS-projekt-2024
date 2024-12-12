@@ -22,8 +22,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         },
         body: JSON.stringify({ code }),
       });
-
+      //Hvis authtication ikke er ok, kastes en fejl
       if (!tjekAuthticationResponse.ok) {
+        //Setter den respons vi får fra serveren til en variabel
         const data = await tjekAuthticationResponse.json();
         console.error("Error:", data.error || "Wrong confirmation code");
         throw new Error(data.error || "Wrong confirmation code");

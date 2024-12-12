@@ -78,9 +78,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   // **3. Håndtering af kurven og sessionStorage**
   const cartDropdown = document.getElementById("cartDropdown");
   const cartButton = document.querySelector(".cart");
-  let cartItems = JSON.parse(sessionStorage.getItem("cartItems")) || []; // Hent fra sessionStorage
+  // Hent fra sessionStorage
+  let cartItems = JSON.parse(sessionStorage.getItem("cartItems")) || [];
 
-  // Funktion: Opdater dropdown-menuen
+  //Opdater dropdown-menuen
   function updateCart() {
     cartDropdown.innerHTML = ""; // Ryd dropdown-indholdet
 
@@ -189,8 +190,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       price: productPrice,
       category: productCategory,
     });
-    sessionStorage.setItem("cartItems", JSON.stringify(cartItems)); // Gem i sessionStorage
-    console.log("Opdateret cartItems:", cartItems); // Debugging
+    // Gem i sessionStorage
+    sessionStorage.setItem("cartItems", JSON.stringify(cartItems));
+    console.log("Opdateret cartItems:", cartItems);
     updateCart();
   }
 
@@ -201,19 +203,19 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       if (index < juices.length) {
         const juice = juices[index];
-        productId = juice.Product_Id; // Brug korrekt nøgle
+        productId = juice.Product_Id;
         productName = juice.Name;
         productPrice = juice.Price;
         productCategory = juice.Category;
       } else if (index < juices.length + sandwiches.length) {
         const sandwich = sandwiches[index - juices.length];
-        productId = sandwich.Product_Id; // Brug korrekt nøgle
+        productId = sandwich.Product_Id;
         productName = sandwich.Name;
         productPrice = sandwich.Price;
         productCategory = sandwich.Category;
       } else {
         const coffeeItem = coffee[index - juices.length - sandwiches.length];
-        productId = coffeeItem.Product_Id; // Brug korrekt nøgle
+        productId = coffeeItem.Product_Id;
         productName = coffeeItem.Name;
         productPrice = coffeeItem.Price;
         productCategory = coffeeItem.Category;

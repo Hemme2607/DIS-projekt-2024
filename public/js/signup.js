@@ -8,6 +8,7 @@ const fDato = document.getElementById("dob");
 
 // Opretter en ny bruger ud fra de indtastede oplysninger
 opretProfil.addEventListener("click", async () => {
+  //Opretter et objekt med de indtastede oplysninger af brugeren
   const nyoprettetBruger = {
     navn: navn.value,
     email: email.value,
@@ -22,7 +23,6 @@ opretProfil.addEventListener("click", async () => {
     return;
   }
 
-  console.log(nyoprettetBruger);
   fetch("/users", {
     method: "POST",
     headers: {

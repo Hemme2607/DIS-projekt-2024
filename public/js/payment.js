@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (!userResponse.ok) {
       throw new Error("Du er ikke logget ind");
     }
-
+    //Gemmer brugerens data i en variabel
     user = await userResponse.json();
   } catch {
     alert("Du er ikke logget ind");
@@ -66,14 +66,13 @@ document.addEventListener("DOMContentLoaded", async () => {
       alert("Ingen brugerdata eller produkter fundet!");
       return;
     }
-
+    // Opretter et objekt med ordredata
     const orderData = {
       userID: user.user.id,
       products: cartItems, // Send hele kurven inkl. category
     };
 
     try {
-      console.log("orderData:", orderData);
       const response = await fetch("/api/orders", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
