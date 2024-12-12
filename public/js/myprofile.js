@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           credentials: "include",
         });
 
+        //Hvis responsen ikke er ok, kastes en fejl
         if (!response.ok) {
           throw new Error("Kunne ikke logge ud");
         }
