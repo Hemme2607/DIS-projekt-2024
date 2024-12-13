@@ -6,6 +6,7 @@
 Du kan nu gå til http://localhost:3000 for at se projektet lokalt på din computer.
 
 **Live**
+
 Hvis du ønsker at se projektet live på internettet, skal du gå til følgende sti: https://joedisproject.live/
 
 **Lavet af:**
