@@ -1,4 +1,4 @@
-**Kør projektet Lokalt:**
+**Hvis du ønsker at køre projektet Lokalt:**
 1. Naviger til mappen app.js
 2. Kør npm install for at installere nødvendige moduler
 3. Kør node app.js og gå til localhost
