@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ code }),
+        credentials: "include",
       });
       //Hvis authtication ikke er ok, kastes en fejl
       if (!tjekAuthticationResponse.ok) {
