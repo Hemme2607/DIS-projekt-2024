@@ -6,13 +6,15 @@ Joedisproject.live er en simpel men spændende ide til joe and juice. Vi har imp
 1. Clone repositoryet --> https://github.com/Hemme2607/DIS-projekt-2024
 2. Naviger til mappen app.js
 3. Kør "npm install" eller "npm i" for at installere nødvendige moduler i terminalen
-4. Gå ind i eller opret en .env fil og indsæt oplysningerne følgende oplysninger:
+4. Gå ind i eller opret en .env fil og indsæt følgende oplysninger:
 
    PORT=3000
    
    TWILIO_ACCOUNT_SID= din-twilio-account-sid
    
    TWILIO_AUTH_TOKEN= dit-twilio-auth-token
+
+   TWILIO_PHONE_NUMBER= dit-twilio-telefonnummer
 
 6. Kør "node app.js" og gå til localhost
 
