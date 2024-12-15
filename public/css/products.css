@@ -168,9 +168,8 @@ body {
   transform: scale(1.05);
 }
 
-/* Dropdown-boksen til kurven */
 .cart-dropdown {
-  display: none; /* Start som skjult */
+  display: none;
   position: absolute;
   top: 50px;
   right: 0;
