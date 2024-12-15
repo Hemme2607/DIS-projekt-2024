@@ -1,6 +1,3 @@
-**OBS**
-Vi har ikke fjernet noget cloud infrastruktur i vores programkode, da vi har benyttet offentlige tilgængelige URL. 
-
 **Om projektet:**
 
 Joedisproject.live er en simpel men spændende ide til joe and juice. Vi har implmenteret et stempelkort, som giver en gevinst hos brugere der tit køber hos Joe. 
