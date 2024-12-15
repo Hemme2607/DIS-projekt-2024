@@ -1,7 +1,6 @@
 **Om projektet**
 
-Joedisproject.live er en simpel ide til joe and juice. Vi har implmenteret et stempelkort, som giver en gevinst hos brugere der tit køber hos Joe. 
-
+Joedisproject.live er en simpel men spændende ide til joe and juice. Vi har implmenteret et stempelkort, som giver en gevinst hos brugere der tit køber hos Joe. 
 
 **Hvis du ønsker at køre projektet Lokalt:**
 1. Clone repositoryet
@@ -18,6 +17,6 @@ Hvis du ønsker at se projektet live på internettet, skal du benytte følgende 
 **Lavet af:**
 - Katrine Solvang, 170832
 - Oliver Hemmingsen, 169600
-- Philip Bøgh, 
-- Katrine Thomsen
+- Philip Bøgh, 169320
+- Katrine Thomsen, 170541
 
