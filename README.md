@@ -10,9 +10,9 @@ Joedisproject.live er en simpel men spændende ide til joe and juice. Vi har imp
 
    PORT=3000
    
-   TWILIO_ACCOUNT_SID=<din-twilio-account-sid>
+   TWILIO_ACCOUNT_SID= din-twilio-account-sid
    
-   TWILIO_AUTH_TOKEN=<dit-twilio-auth-token>
+   TWILIO_AUTH_TOKEN= dit-twilio-auth-token
 
 6. Kør "node app.js" og gå til localhost
 
