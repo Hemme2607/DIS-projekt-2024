@@ -13,6 +13,7 @@ const PORT = process.env.PORT || 3000; // Porte serverene skal køre på
 // Twilio information til SMS
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
+const twilioPhoneNumber = process.env.TWILIO_PHONE_NUMBER;
 const client = twilio(accountSid, authToken);
 
 // Aktivér CORS
@@ -193,7 +194,7 @@ app.post("/authenticateUser", async (req, res) => {
     authenticateMessage[userId] = randomCode;
     //Sender SMS til brugerens telefonnummer
     await client.messages.create({
-      from: "+1 850 972 2311",
+      from: twilioPhoneNumber,
       to: `+45${user.telefon}`,
       body: `Din bekræftelsekode er: ${randomCode}`,
     });
