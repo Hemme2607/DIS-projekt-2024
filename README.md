@@ -9,10 +9,12 @@ Joedisproject.live er en simpel men spændende ide til joe and juice. Vi har imp
 4. Gå ind i eller opret en .env fil og indsæt oplysningerne følgende oplysninger:
 
    PORT=3000
+   
    TWILIO_ACCOUNT_SID=<din-twilio-account-sid>
+   
    TWILIO_AUTH_TOKEN=<dit-twilio-auth-token>
 
-5. Kør "node app.js" og gå til localhost
+6. Kør "node app.js" og gå til localhost
 
 Du kan nu gå til http://localhost:3000 for at se projektet lokalt på din computer.
 
