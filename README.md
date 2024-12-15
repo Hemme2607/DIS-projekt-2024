@@ -6,7 +6,7 @@ Joedisproject.live er en simpel men spændende ide til joe and juice. Vi har imp
 1. Clone repositoryet --> https://github.com/Hemme2607/DIS-projekt-2024
 2. Naviger til mappen app.js
 3. Kør "npm install" eller "npm i" for at installere nødvendige moduler i terminalen
-4. Opret en .env fil og indsæt oplysningerne fra zip filen, som er vedhæftet under digtal eksamen
+4. Opret en .env fil og indsæt oplysningerne fra zip filen, som er vedhæftet under digtal eksamen under bilag
 5. Kør "node app.js" og gå til localhost
 
 Du kan nu gå til http://localhost:3000 for at se projektet lokalt på din computer.
