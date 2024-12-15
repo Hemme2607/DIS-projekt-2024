@@ -1,5 +1,6 @@
 **Om projektet**
-joedisproject.live er en simpel ide til joe and juice. Vi har implmenteret et stempelkort, som giver en gevinst hos brugere der tit køber hos Joe. 
+
+1. joedisproject.live er en simpel ide til joe and juice. Vi har implmenteret et stempelkort, som giver en gevinst hos brugere der tit køber hos Joe. 
 
 
 **Hvis du ønsker at køre projektet Lokalt:**
